@@ -74,7 +74,7 @@ console.log( "c instanceof Point = " + (c instanceof Point) );
 document.writeln( "Ellipse e = " + e );
 document.writeln( "e's area = " + e.area() );
 console.log( Object.getPrototypeOf(e) );
-console.log( "e instancof Ellipse = " + (e instanceof Ellipse) );
+console.log( "e instanceof Ellipse = " + (e instanceof Ellipse) );
 console.log( "e instanceof Circle = " + (e instanceof Circle) );
 console.log( "e instanceof Point = " + (e instanceof Point) );
 
