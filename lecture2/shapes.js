@@ -45,8 +45,7 @@ Ellipse.prototype.toString = function() {
 function iterateOverProperties(obj) {
 	var e; var str = "{ ";
 	for (e in obj) {
-		if (! obj.hasOwnProperty(e) ) continue;
-		if (typeof(obj[e]) != "function") {
+		if ( (obj.hasOwnProperty(e) ) && (typeof(obj[e]) != "function") ) {
 			str = str + e + " = " + obj[e] + " , ";
 		} 
 	}
