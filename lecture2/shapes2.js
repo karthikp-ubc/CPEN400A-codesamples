@@ -55,4 +55,20 @@ e.init(5, 10, 5, 2);
 document.writeln( "Ellipse e = " + e );
 document.writeln( "e's area = " + e.area() );
 console.log( Object.getPrototypeOf(e) ); 
-console.log( Object.getPrototypeOf( Object.getPrototypeOf(e) ) ); 
+console.log( Object.getPrototypeOf( Object.getPrototypeOf(e) ) );
+
+ 
+function iterateOverProperties(obj) {
+	var e; var str = "{ ";
+	for (e in obj) {
+		if ( (obj.hasOwnProperty(e) ) && (typeof(obj[e]) != "function") ) {
+			str = str + e + " = " + obj[e] + " , ";
+		} 
+	}
+	str = str + " } ";
+	return str;
+};
+
+console.log( iterateOverProperties(p) );
+console.log( iterateOverProperties(c) );
+console.log( iterateOverProperties(e) );
