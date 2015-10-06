@@ -15,16 +15,19 @@ document.writeln( f(5) );
 function Counter(initial) {
 	var val = initial;
 	return {	
-		increment : function() { return ++val; },
-		reset: function() { val = initial; }
+		increment : function() { val += 1; },
+		reset: function() { val = initial; },
+		get: function() { return val; }
 	};
 };
 
 var f = Counter(5), g = Counter(10);
 f.increment();
-f.reset();
 g.increment();
-document.writeln( f.increment() + "," + g.increment() );
+f.reset();
+f.increment();
+g.increment();
+document.writeln( f.get() + "," + g.get() );
 
 // Closure that keeps a pointer to the enclosing function itself
 function MultiCounter(initial) {
