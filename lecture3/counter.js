@@ -57,7 +57,7 @@ console.log( m );
 console.log( m.getValues() );
 
 // This example is WRONG ! Do NOT use Closures this way !
-function MakeCounters(n) {
+function MakeCounters2(n) {
 	var counters = [];
 	for (var i=0; i<n; i++) {
 		var val = i;
@@ -69,13 +69,22 @@ function MakeCounters(n) {
 	}
 	return counters;
 };
+
+
+// Solution to the class acitvity correcting the above example
+function MakeCounters(n) {
+	var counters = [];
+	for (var i=0; i<n; i++) {
+		counters[i] = Counter(i);
+	}
+	return counters;
+};
+	
 var m = MakeCounters(10);
 for (var i=0; i<10; i++) {
-        document.writeln("Counter[ " + i + "] = " + m[0].get(i));
+        document.writeln("Counter[ " + i + "] = " + m[i].get());
 }
 	
-// Solution to the class acitvity correcting this will be posted after class
-
 // This is an example of a higher-order function
 var map = function( array, fn ) {
 	// Applies fn to each element of list, returns a new list
