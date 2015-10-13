@@ -1,21 +1,18 @@
-// Simple example to combine closures and timeouts
-
+// Solution to the class activity (Slide 20)
 
 var invokeTimes = function(func, noTimes, time) {
 	console.log("Setting up interval " + noTimes + " " + time);
-	// timeOutHanlder is a closure
 	var count = 0;
 	var timeoutHandler = function() {
-		return function() {
-			console.log( "invocation " + count);
-			func(count);
-			count = count + 1;
-			if (count < noTimes) {
-				setTimeout(timeoutHandler(), time);
-			}
+		// timeOutHanlder is a closure
+		console.log( "invocation " + count);
+		func(count);
+		count = count + 1;
+		if (count < noTimes) {
+			setTimeout(timeoutHandler, time);
 		}
 	};
-	setTimeout(timeoutHandler(), time);
+	setTimeout(timeoutHandler, time);
 };
 
 var setup = function() {
