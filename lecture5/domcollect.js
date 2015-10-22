@@ -23,8 +23,25 @@ var search = function(node, text) {
 	return found;	
 };
 
-// Concatenate all the textnodes in the DOM-subtree rooted at id
-var concatenateSiblings = function(id) {
+// Concatenate all the text in the subtree of a node
+var concatenateSubtree = function(node) {
+	var result = "";
+	if (! node) return result;
+	if (node.nodeType == 3) {
+		result = result + node.nodeValue;
+	} else {
+		var cn = node.childNodes;
+		if (cn) {
+			for (var i=0; i<cn.length; i++) {
+				result = result + concatenateSubtree(cn[i]);
+			}
+		}
+	};
+	return result;
+};
+
+// Concatenate all the textnodes in the siblings of text node with the ID= id
+var concatenateSiblings = function(id, includeSubtrees) {
 	var node = document.getElementById(id);
 	var result = "";
 	var parent = node.parentNode;
@@ -34,13 +51,16 @@ var concatenateSiblings = function(id) {
 		for (var i=0; i< siblings.length; i++) {
 			var sibling = siblings[i];
 			if (sibling && sibling.nodeType == 3) {
-				console.log(sibling);
 				result = result + sibling.nodeValue;
+			}
+			if (includeSubtrees) {
+				result = result + concatenateSubtree(sibling);
 			}
 		}
 	}
 	return result;
 };
+
 
 window.onload = function() {
 	// Find all div elements rooted at the DOM with id=one	
@@ -52,6 +72,6 @@ window.onload = function() {
 	console.log(found);	
 
 	// Concatenate the text nodes rooted at node one
-	var str = concatenateSiblings("four");
+	var str = concatenateSiblings("one", true);
 	console.log(str);
 };
