@@ -14,8 +14,10 @@ var search = function(node, text) {
 		if (node.nodeValue == text) found = true;
 	} else {
 		var cn = node.childNodes;
-		for (var i=0; i<cn.length; i++) {
-			found = found || search(cn[i], text);
+		if (cn) {
+			for (var i=0; i<cn.length; i++) {
+				found = found || search(cn[i], text);
+			}
 		}	
 	};
 	return found;	
@@ -27,7 +29,7 @@ var concatenateSiblings = function(id) {
 	var result = "";
 	var parent = node.parentNode;
 	var siblings = [];
-	if (parent) {
+	if (parent && parent.childNodes) {
 		siblings = parent.childNodes;
 		for (var i=0; i< siblings.length; i++) {
 			var sibling = siblings[i];
@@ -46,7 +48,7 @@ window.onload = function() {
 	console.log(s);
 
 	// Find the text "is" starting from node one
-	var found = search(document.getElementById("one"), " is "); 	
+	var found = search(document.getElementById("one"), " his "); 	
 	console.log(found);	
 
 	// Concatenate the text nodes rooted at node one
