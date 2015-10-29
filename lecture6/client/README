@@ -1,0 +1,8 @@
+This is a simple client server implementation for testing AJAX messages.
+The server is written in Python (2 not 3), and you need to install Python to run it.
+
+You can modify the server parameters by changing the corresponding variables in the Python file
+The variable names are self-explanatory. Use this to test the error-handling and timeout
+functions in your AJAX requests. 
+
+If you want to contribute code to the server to make it easier to configure, please do so. 
