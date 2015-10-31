@@ -4,8 +4,11 @@
 function displayInFlight(inflight) {
 	return function() {	
 		if (inflight.length > 0) {
-			console.log("In flight messages : ");
-			 console.log(inflight);
+			var result = "In flight messages : ";
+			for (var i=0; i<inflight.length; i++) {
+				result = result + " (" + inflight[i] + ")";
+			}
+			console.log(result);
 		}
 	};
 };
@@ -25,33 +28,44 @@ var RequestCount = function(msg, inflight) {
 	var count = 0;
 	var sendRequest = function() {
 		var xhr = new XMLHttpRequest();
-		var name = "XHR " + count + " : ";
+		var name = "XHR " + count;
 		var index = 0;
 		xhr.open("GET", msg + '-' + count);
 		count = count + 1;
+		var removeFromList = function() {
+			index = inflight.indexOf(xhr);
+			if (index > -1) {
+				inflight.splice(index, 1);
+			} else {
+				alert(name + " not found !");
+			}
+		};
 		xhr.onload = function() {
 			if (xhr.status==200) {
-				console.log(name + "Received " + xhr.responseText);
+				console.log(name + " : Received " + xhr.responseText);
 			} else {	
-				console.log(name + "Received error code : " + xhr.status);
+				console.log(name + " : Received error code : " + xhr.status);
 			}
-			inflight.splice(index, 1);
+			removeFromList();
 		};		
 		xhr.ontimeout = function() {
-			console.log(name + "Timed out after " + xhr.timeout + " ms");
-			inflight.splice(index, 1);
+			console.log(name + " : Timed out after " + xhr.timeout + " ms");
+			removeFromList();
 		}
 		xhr.onerror = function() {
-			console.log(name + "Resulted in an error !");
-			inflight.splice(index, 1);
-		}  
+			console.log(name + " : Resulted in an error !");
+			removeFromList();
+		};  
 		xhr.onabort = function() {
-			console.log(name + "Aborted");
-			inflight.splice(index, 1);
-		}
+			console.log(name + " : Aborted");
+			removeFromList();
+		};
+		xhr.toString = function() {
+			return name;
+		};
 		// All the handlers are setup, so send the message
 		xhr.timeout = 5000;	 // Wait at most 5000 ms for a response
-		index = inflight.length; // Store the index in the inflight list
+		console.log("Sending request " + xhr);
 		inflight.push(xhr);	 // Add it to the inflight messages before sending it
 		xhr.send();
 	}
