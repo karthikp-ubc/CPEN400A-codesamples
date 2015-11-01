@@ -1,0 +1,5 @@
+#one { color: red; }
+.A { color: blue; }
+div.B > div.A { color: orange; }
+#three > div.B { color:green; }
+
