@@ -1,0 +1,25 @@
+<html ng-app="todoApp">
+    <head>
+        <title>Todo App</title>
+        
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+        <script type="text/javascript" src="js/controller.js"></script>
+    </head>
+    
+    <body ng-controller="TodoController">
+        <h1>Todo App</h1>
+        
+        <div>There are currently {{listSize}} items in the list</div>
+        
+        <div>
+            <div ng-repeat="item in todoList">
+                <button ng-click="removeItem($index)">Remove</button>
+                <span ng-hide="item.editing" ng-click="startEditing($index)">{{item.val}}</span>
+                <input type="text" ng-show="item.editing" ng-model="item.val" ng-keypress="updateItem($event, $index)" />
+            </div>
+        </div>
+        
+        <input type="text" ng-model="userInput" />
+        <button ng-click="addItem()">Add Item</button>
+    </body>
+</html>
