@@ -3,7 +3,7 @@
 var promptUser = function(message, timePeriod) {
 	var timeoutHandler = function() {
 		var answer = confirm(message);
-		if (answer) {
+		if (! answer) {
 			setTimeout(timeoutHandler, timePeriod);
 			console.log("Setting timer ");
 		}
