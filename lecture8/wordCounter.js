@@ -1,20 +1,33 @@
-// Counts the total number of characters in a given text file
+// Searches for a given string in a file. Called with two command line arguments: fileName and string to search for.
+
 
 var fs = require('fs');
 if (! fs) process.exit(1);
 
-var length = 0;
-var fileName = "sample.txt";
+if (process.argv.length < 4) {
+	console.log("Syntax: fileName string");
+	process.exit(2);
+}
 
+var fileName = process.argv[2];
+var textToFind = process.argv[3];	
 var readStream = fs.createReadStream(fileName);;
+var oldBlob = "";
+var index = -1;
 
 readStream.on("data", function(blob) {
-			console.log("Read " + blob.length);
-			length += blob.length;	
+			console.log("Read " + blob.length +  "bytes");
+			var newBlob = oldBlob + blob;
+			index = newBlob.indexOf(textToFind);
+			if (index > 0) readStream.emit("end");
+			oldBlob = blob;
 		} );
 
 readStream.on("end", function() {
-		console.log("Total number of chars read = " + length);
+		if (index>0)
+			console.log("Found string " + textToFind);
+		else	
+			console.log("Did not find string " + textToFind);
 	} );
 
 readStream.on("error", function() {
