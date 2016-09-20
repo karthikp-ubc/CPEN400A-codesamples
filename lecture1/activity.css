@@ -1,0 +1,14 @@
+#news { background-color: silver; font: black; color: black; }
+
+.sports { color:blue; text-decoration:underline; }
+
+H3, H4 { font-family: sans-serif; }
+
+.latest { color: green; }
+
+#news span { color: red; }
+
+P.select { font-size: medium; }
+
+
+
