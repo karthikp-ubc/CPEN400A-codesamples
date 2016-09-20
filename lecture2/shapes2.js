@@ -50,14 +50,18 @@ document.writeln( "Circle c = " + c );
 document.writeln( "c's area = " + c.area() );
 console.log( Object.getPrototypeOf(c) );
 
-var e = Object.create(Ellipse)
+var e = Object.create(Ellipse);
 e.init(5, 10, 5, 2);
 document.writeln( "Ellipse e = " + e );
 document.writeln( "e's area = " + e.area() );
 console.log( Object.getPrototypeOf(e) ); 
 console.log( Object.getPrototypeOf( Object.getPrototypeOf(e) ) );
 
- 
+var e2 = Object.create(Ellipse.copy());
+e2.init(0, 0, 0, 0); 
+document.writeln( "Ellipse e = " + e );
+document.writeln( "Ellipse e2 = " + e2 );
+
 function iterateOverProperties(obj) {
 	var e; var str = "{ ";
 	for (e in obj) {
