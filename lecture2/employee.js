@@ -9,20 +9,25 @@ var Person = function(firstName, lastName, gender) {
 
 var p1 = new Person("John", "Smith", "Male");
 
-console.log(p1.name());
-console.log(Object.getPrototypeOf(p1));
-console.log(Object.getPrototypeOf(Person));
-
 Person.prototype.print = function() { // this is a method of the prototype
 	console.log( this.name() + " " + this.gender );
 }
 
+
+console.log(p1.name());
+var proto1 = Object.getPrototypeOf(p1);
+console.log(proto1);
+console.log(Object.getPrototypeOf(proto1));
+
 var p2 = new Person("Linda", "James", "Female");
+var proto2 = Object.getPrototypeOf(p1);
+console.log(proto2);
 
 var Employee = function(firstName, lastName, gender, title) {
 	Person.call(this, firstName, lastName, gender);
 	this.title = title;	
 };
+
 Employee.prototype = new Person();
 Employee.prototype.constructor = Employee;
 
