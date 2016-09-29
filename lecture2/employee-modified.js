@@ -12,20 +12,26 @@ console.log( p1.firstName );
 console.log( p1["lastName"] );
 console.log( p1.name );
 
+p1.print = function() {
+	console.log("Boo");
+}
+
+
 Person.prototype.print = function() { // this is a method of the prototype
 	console.log( this.name() + " " + this.gender );
 }
 
+
 console.log(p1);
-console.log(Person.prototype);
 var proto1 = Object.getPrototypeOf(p1);
 console.log(proto1);
+console.log(proto1.gender);
 console.log(Object.getPrototypeOf(proto1));
 
 var p2 = new Person("Linda", "James", "Female");
-console.log(p2);
 var proto2 = Object.getPrototypeOf(p2);
 console.log(proto2);
+console.log(p2);
 
 p1.print();
 p2.print();
@@ -43,7 +49,6 @@ Employee.prototype.print = function() {
 }
 
 var e1 = new Employee("XYZ", "ABC", "Male", "Manager");
-console.log( Employee.prototype );
 console.log( Object.getPrototypeOf(e1) );
 
 // Print all the people and the employees

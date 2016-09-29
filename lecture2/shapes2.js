@@ -57,10 +57,12 @@ document.writeln( "e's area = " + e.area() );
 console.log( Object.getPrototypeOf(e) ); 
 console.log( Object.getPrototypeOf( Object.getPrototypeOf(e) ) );
 
-var e2 = Object.create(Ellipse.copy());
+var e2 = Object.create(Ellipse);
 e2.init(0, 0, 0, 0); 
 document.writeln( "Ellipse e = " + e );
 document.writeln( "Ellipse e2 = " + e2 );
+console.log( Object.getPrototypeOf(e2) ); 
+console.log( Object.getPrototypeOf( Object.getPrototypeOf(e2) ) );
 
 function iterateOverProperties(obj) {
 	var e; var str = "{ ";
