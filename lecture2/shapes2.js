@@ -16,7 +16,7 @@ var Point = {
 
 var Circle = Object.create(Point);
 Circle.init = function(x, y, r) {
-	Point.init(x, y);
+	Point.init.call(this, x, y);
 	this.r = r;
 };
 Circle.area = function () {
@@ -28,7 +28,7 @@ Circle.toString =  function() {
 
 var Ellipse = Object.create(Circle);
 Ellipse.init = function(x, y, r, r2) {
-	Circle.init(x, y, r);
+	Circle.init.call(this, x, y, r);
 	this.r2 = r2;
 };	
 Ellipse.area = function() { 
