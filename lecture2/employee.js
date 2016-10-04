@@ -50,3 +50,16 @@ console.log( Object.getPrototypeOf(e1) );
 e1.print();
 p1.print();
 p2.print();
+
+// Check the instances and the prototypes
+console.log(e1 instanceof Employee);
+console.log(e1 instanceof Person);
+console.log(e1 instanceof Object);
+
+console.log(p1 instanceof Employee);
+console.log(p1 instanceof Person);
+console.log(p1 instanceof Object);
+
+console.log(p2 instanceof Employee);
+console.log(p2 instanceof Person);
+console.log(p2 instanceof Object);
