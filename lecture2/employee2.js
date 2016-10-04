@@ -25,7 +25,7 @@ var e = Object.create(Person, {
 e.title = "manager";
 e.print = function() {
 		console.log("Employee " + this.title);
-		Person.print(); 
+		Person.print.call(this); 
 };
 
 e.print();
