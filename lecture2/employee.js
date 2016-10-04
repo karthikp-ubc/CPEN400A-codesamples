@@ -70,3 +70,13 @@ console.log( "firstName" in p1 );
 console.log( "lastName" in p1 );
 console.log( "title" in p1 );
 
+console.log( "firstName" in e1 );
+console.log( "lastName" in e1 );
+console.log( "title" in e1 );
+
+console.log( p1.hasOwnProperty("firstName") );
+console.log( p1.hasOwnProperty("lastName") );
+console.log( p1.hasOwnProperty("print") );
+console.log( e1.hasOwnProperty("firstName") );
+console.log( e1.hasOwnProperty("lastName") );
+console.log( e1.hasOwnProperty("print") );
