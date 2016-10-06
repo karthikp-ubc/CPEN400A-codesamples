@@ -44,9 +44,12 @@ Ellipse.prototype.toString = function() {
 
 function iterateOverProperties(obj) {
 	var e; var str = "{ ";
+	var proto = Object.getPrototypeOf(obj);
 	for (e in obj) {
-		if ( (obj.hasOwnProperty(e) ) && (typeof(obj[e]) != "function") ) {
-			str = str + e + " = " + obj[e] + " , ";
+		if ( ( obj.hasOwnProperty(e) ) 
+		  && ( typeof(obj[e]) != "function") 
+		  && ! (e in proto ) ) {
+				str = str + e + " = " + obj[e] + " , ";
 		} 
 	}
 	str = str + " } ";
@@ -81,6 +84,6 @@ console.log( "e instanceof Point = " + (e instanceof Point) );
 delete e.area;  // Now this reverts to circle's area
 document.writeln( "e's area (wrong!) = " + e.area() );
 
-console.log( iterateOverProperties(p) );
-console.log( iterateOverProperties(c) );
-console.log( iterateOverProperties(e) );
+console.log( "p's properties " + iterateOverProperties(p) );
+console.log( "c's properties " + iterateOverProperties(c) );
+console.log( "e's properties " + iterateOverProperties(e) );
