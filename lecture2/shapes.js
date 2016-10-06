@@ -12,6 +12,8 @@ Point.prototype.toString = function() {
 	return "(" + this.x + "," + this.y + ")";
 };
 
+console.log(Point);
+
 var Circle = function(x, y, r) {
 	Point.call(this, x, y);
 	this.r = r;
@@ -48,7 +50,7 @@ function iterateOverProperties(obj) {
 	for (e in obj) {
 		if ( ( obj.hasOwnProperty(e) ) 
 		  && ( typeof(obj[e]) != "function") 
-		  && ! (e in proto ) ) {
+		  && (e in proto ) ) {
 				str = str + e + " = " + obj[e] + " , ";
 		} 
 	}
@@ -59,6 +61,7 @@ function iterateOverProperties(obj) {
 var p = new Point(10, 20);
 var c = new Circle(20, 30, 5);
 var e = new Ellipse(5, 10, 5, 2);
+
 
 document.writeln( "Point p = " + p );
 document.writeln( "p's area = " + p.area() );

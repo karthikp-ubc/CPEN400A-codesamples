@@ -71,7 +71,7 @@ function iterateOverProperties(obj) {
 	for (e in obj) {
 		if ( ( obj.hasOwnProperty(e) ) 
 		  && ( typeof(obj[e]) != "function") 
-		  && ! (e in proto ) ) {
+		  && (e in proto ) ) {
 				str = str + e + " = " + obj[e] + " , ";
 		} 
 	}
