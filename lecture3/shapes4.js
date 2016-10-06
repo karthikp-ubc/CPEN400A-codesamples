@@ -1,4 +1,5 @@
 // Example of different ways to call a function and prototype chains
+// Added solution to class activity on slide 21 and replaced new with Point.new
 
 function Point(x, y) {
 	this.x = x;
@@ -30,7 +31,6 @@ var add2 = function(p1, p2) {
 	res.y = p1.y + p2.y;
 	return res;
 };
-
 
 var p1 = Point.new(2, 3);
 var p2 = Point.new(5, 7);

@@ -14,7 +14,7 @@ Point.prototype.toString = function() {
 	return "(" + this.x + "," + this.y + ")";
 };
 
-var add = function(p1, p2) {
+var add1 = function(p1, p2) {
 	return new Point(p1.x + p2.x, p1.y + p2.y);
 };
 
@@ -27,13 +27,11 @@ var add2 = function(p1, p2) {
 
 var p1 = new Point(2, 3);
 var p2 = new Point(5, 7);
-console.log(Object.getPrototypeOf(p1) == Object.getPrototypeOf(p2));
-console.log(Object.getPrototypeOf(p1).constructor);
 
 document.writeln( "Distance between p1 and p2 = " + p1.dist(p2) );
-var res1 = add(p1, p2);
+var res1 = add1(p1, p2);
 console.log(res1);
-document.writeln( "Add of p1 and p2 = res1 =  " + res1 ); 
+document.writeln( "Add1 of p1 and p2 = res1 =  " + res1 ); 
 
 var Points = [ p1, p2 ];
 var res2 = add2.apply( Object.getPrototypeOf(p1), Points);

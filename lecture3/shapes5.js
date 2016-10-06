@@ -1,4 +1,6 @@
 // Example of different ways to call a function and prototype chains
+// Added solution to class activity on slide 28 
+
 
 function Point(x, y) {
 	this.x = x;
