@@ -15,10 +15,12 @@ Point.prototype.toString = function() {
 };
 
 var add1 = function(p1, p2) {
+	console.log(this);
 	return new Point(p1.x + p2.x, p1.y + p2.y);
 };
 
 var add2 = function(p1, p2) {
+	console.log(this);
 	var res = Object.create(this);
 	res.x = p1.x + p2.x;
 	res.y = p1.y + p2.y;
