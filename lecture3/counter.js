@@ -81,13 +81,21 @@ function MakeCounters2(n) {
 function MakeCounters(n) {
 	var counters = [];
 	for (var i=0; i<n; i++) {
-		counters[i] = Counter(i);
+		counters[i] = function( ) {
+			var initial = i, val = initial;
+			return {	
+				increment: function() { val++; },
+ 				get: function() { return val; },
+				reset: function() { val = initial; }
+			}
+		}();	// Don't forget to call the function
 	}
 	return counters;
 };
 	
-var m = MakeCounters2(10);
+var m = MakeCounters(10);
 for (var i=0; i<10; i++) {
+	console.log(m[i]);
         document.writeln("Counter[ " + i + "] = " + m[i].get());
 }
 	
