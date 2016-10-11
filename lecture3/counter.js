@@ -8,8 +8,14 @@ function Adder(val) {
 };
 
 var f = Adder(5);
-document.writeln( f(3) );
-document.writeln( f(5) );
+console.log( f(3) );
+console.log( f(5) );
+
+var f2 = Adder(100);
+console.log( f2(2) );
+console.log( f2(3) );
+
+console.log( f(1) );
 
 // Counter closure returning an object
 function Counter(initial) {
@@ -27,7 +33,7 @@ g.increment();
 f.reset();
 f.increment();
 g.increment();
-document.writeln( f.get() + "," + g.get() );
+console.log( f.get() + "," + g.get() );
 
 // Closure that keeps a pointer to the enclosing function itself
 function MultiCounter(initial) {
@@ -80,7 +86,7 @@ function MakeCounters(n) {
 	return counters;
 };
 	
-var m = MakeCounters(10);
+var m = MakeCounters2(10);
 for (var i=0; i<10; i++) {
         document.writeln("Counter[ " + i + "] = " + m[i].get());
 }
