@@ -76,8 +76,23 @@ function MakeCounters2(n) {
 	return counters;
 };
 
+// This solves the problem, but adds additional fields to the counters object 
+function MakeCounters1(n) {
+	var counters = [];
+	for (var i=0; i<n; i++) {
+		counters[i] = {
+			val : i,
+			initial : i,
+			increment: function() { this.val++; },
+ 			get: function() { return this.val; },
+			reset: function() { this.val = this.initial; }
+		}
+	}
+	return counters;
+};
 
-// Solution to the class acitvity correcting the above example
+
+// Solution to the class activity correcting the above example using closures
 function MakeCounters(n) {
 	var counters = [];
 	for (var i=0; i<n; i++) {
@@ -93,7 +108,7 @@ function MakeCounters(n) {
 	return counters;
 };
 	
-var m = MakeCounters(10);
+var m = MakeCounters1(10);
 for (var i=0; i<10; i++) {
 	console.log(m[i]);
         document.writeln("Counter[ " + i + "] = " + m[i].get());
