@@ -1,4 +1,4 @@
-
+// Example to illustrate using addEventListener and getElementById
 
 
 var popup = function(name, foo) {
