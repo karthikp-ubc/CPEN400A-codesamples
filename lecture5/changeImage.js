@@ -1,16 +1,25 @@
-var changeImages = function(images) {
-	var div4 = document.getElementById("four");
-	var img = div4.getElementsByTagName("img")[0];
-	var currentIndex = images.indexOf( img.src );
-	if (currentIndex==-1) currentIndex = 0;
-	var changeImage = function() {	
-		currentIndex = (currentIndex + 1) % images.length;
-		img.src = images[currentIndex]; 	
-	};
-	setInterval(changeImage, 5000);	// Change the image every 5 seconds
+var changeImages = function(id,  interval) {
+	var div = document.getElementById(id);
+	var imgtags = div.getElementsByTagName("img");
+
+	function changeImage() {
+		if (imgtags.length==0) return;
+		var first = imgtags[0].src;
+		for (var i=0; i<imgtags.length; i++) {
+			var img = imgtags[i];
+			var nextIndex = (i + 1);
+			console.log("Replacing " + i + " with " + nextIndex); 
+			if (nextIndex==imgtags.length) 
+				img.src = first;
+			else
+				img.src = imgtags[nextIndex].src;
+		}
+	}
+	
+	setInterval(changeImage, interval);	// Change the image every 5 seconds
 }
 
 window.onload = function() {
-	var images = ["images/one.jpg", "images/two.jpg", "images/three.jpg", "images/four.jpg", "images/five.jpg"];
-	changeImages(images);
+	var interval = 5000;
+	changeImages("parent", interval);
 };
