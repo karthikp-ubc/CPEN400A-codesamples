@@ -2,6 +2,7 @@
 // Get the elements of a certain tag rooted at the node 'id'
 var getElementsRootedAt = function(tagName, id) {
 	var el = document.getElementById(id);
+	if (el==null) return null;
 	var t = el.getElementsByTagName(tagName);
 	return t;
 };
@@ -40,14 +41,14 @@ var concatenateSubtree = function(node) {
 	return result;
 };
 
+// Solution to class activity on Slide 21
 // Concatenate all the textnodes in the siblings of text node with the ID= id
 var concatenateSiblings = function(id, includeSubtrees) {
 	var node = document.getElementById(id);
 	var result = "";
 	var parent = node.parentNode;
-	var siblings = [];
 	if (parent && parent.childNodes) {
-		siblings = parent.childNodes;
+		var siblings = parent.childNodes;
 		for (var i=0; i< siblings.length; i++) {
 			var sibling = siblings[i];
 			if (sibling && sibling.nodeType == 3) {
@@ -68,10 +69,10 @@ window.onload = function() {
 	console.log(s);
 
 	// Find the text "is" starting from node one
-	var found = search(document.getElementById("one"), " his "); 	
+	var found = search(document.getElementById("one"), " is "); 	
 	console.log(found);	
 
-	// Concatenate the text nodes rooted at node one
+	// Concatenate the siblings of text nodes rooted at node one
 	var str = concatenateSiblings("one", true);
 	console.log(str);
 };

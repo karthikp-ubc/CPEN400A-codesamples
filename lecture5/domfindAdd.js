@@ -4,24 +4,24 @@
 // to the document fragment frag (or DOM node)
 function collectNodes(n,  matches, frag) {
 	if (n) {
-		// console.log("Entering: " ); console.log(n);
+		console.log("Entering: " ); console.log(n);
 		var c = n.firstChild;
 		while (c != n.lastChild ) {	
 			// NOTE: Moving it to the fragment makes it forget its next sibling
 			// So make sure we remember it for it to be updated later
 			var next = c.nextSibling;
 			if ( matches.call(null, c) ) {
-				//	console.log("Appending :"); console.log(c.tagName);
+				console.log("Appending :"); console.log(c.tagName);
 				frag.appendChild(c);
 			} else {
 				// No need to recurse into subtrees if the parent node matches
-				// console.log("Recursing into "); console.log(c);
+				console.log("Recursing into "); console.log(c);
 				collectNodes(c, matches, frag);
 				c = c.nextSibling;
 			}
 			c = next;
 		}
-		// console.log("Leaving :"); console.log(n);
+		console.log("Leaving :"); console.log(n);
 	}
 };
 

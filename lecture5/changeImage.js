@@ -16,7 +16,7 @@ var changeImages = function(id,  interval) {
 		}
 	}
 	
-	setInterval(changeImage, interval);	// Change the image every 5 seconds
+	setInterval(changeImage, interval);	// Change the image every few seconds
 }
 
 window.onload = function() {
