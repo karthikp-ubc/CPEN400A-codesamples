@@ -1,0 +1,17 @@
+This is a simple client server implementation for testing AJAX messages.
+The server is written in Python (2 not 3), and you need to install Python to run it.
+
+You can modify the server parameters by changing the corresponding variables in the Python file
+The variable names are self-explanatory. Use this to test the error-handling and timeout
+functions in your AJAX requests. 
+
+IMPORTANT: You must run the server from the /client directory or it will not work. For example,
+if you're running in a Unix terminal from the command line, go to the client directory and type
+
+python ../server/simpleserver.py
+
+You'll see a message like "Starting Server on Port 8080" (you can change the port no.).
+
+To connect to the server in your web browser, type "http://localhost:8080/index.html"
+
+If you want to contribute code to the server to make it easier to configure, please do so. 

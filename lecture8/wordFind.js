@@ -1,6 +1,5 @@
 // Searches for a given string in a file. Called with two command line arguments: fileName and string to search for.
 
-
 var fs = require('fs');
 if (! fs) process.exit(1);
 
