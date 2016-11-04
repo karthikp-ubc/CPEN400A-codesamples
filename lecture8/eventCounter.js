@@ -34,7 +34,9 @@ var printCounts = registerEvents(e, keywords);
 
 // Read the file contents and emit it to the stream one word at a time
 printCounts();
-
+// e.emit("the");
+// e.emit("a");
+// e.emit("the");
 var words = text.split(" ");
 words.forEach( function(word){
 		e.emit(word.trim());	
