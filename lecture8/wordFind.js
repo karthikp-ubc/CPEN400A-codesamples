@@ -1,4 +1,6 @@
 // Searches for a given string in a file. Called with two command line arguments: fileName and string to search for.
+// Assumes that length of the string being searched < length of buffer being read at any time 
+// The above assumption is necessary as it concatenates atmost two buffers
 
 var fs = require('fs');
 if (! fs) process.exit(1);
@@ -15,15 +17,15 @@ var oldBlob = "";
 var index = -1;
 
 readStream.on("data", function(blob) {
-			console.log("Read " + blob.length +  "bytes");
+			console.log("Read " + blob.length +  " bytes");
 			var newBlob = oldBlob + blob;
 			index = newBlob.indexOf(textToFind);
-			if (index > 0) readStream.emit("end");
+			if (index >= 0) readStream.emit("end");
 			oldBlob = blob;
 		} );
 
 readStream.on("end", function() {
-		if (index>0)
+		if (index>=0)
 			console.log("Found string " + textToFind);
 		else	
 			console.log("Did not find string " + textToFind);
