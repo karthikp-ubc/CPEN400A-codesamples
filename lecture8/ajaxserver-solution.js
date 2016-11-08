@@ -7,12 +7,20 @@ var fs = require("fs");
 if (! fs) process.exit(2);
 
 var path="./client";
+var counts = {};	// Number of requests from each address
 
 var serveRequest = function(request, response) {
 	if ( request.url.startsWith("/hello") ) {
 		// If it's an AJAX request, return world
 		console.log( "Received " + request.url );
-		var fileName = path + "/file"+ request.connection.remoteAddress;
+		var addr = request.connection.remoteAddress;
+		if (addr in counts)
+			counts[addr]++;
+		else
+			counts[addr] = 0;
+		var instance = counts[addr];
+		var fileName = path + "/file"+ addr;
+		console.log(fileName);
 		fs.appendFile(fileName, request.url + "\n", function(err) {
 			if (err) console.log("Error writing to file " + fileName);	
 		});

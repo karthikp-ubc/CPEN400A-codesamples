@@ -8,7 +8,7 @@ var serveRequest = function(request, response) {
 	console.log("Calling serveRequest : " + request.url );
 	request.on("end", function() {
 		console.log("Request ended");
-		response.write("world");
+		response.write("Ok");
 		response.end();	
 	});
 };
