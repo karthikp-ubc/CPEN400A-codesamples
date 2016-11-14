@@ -8,11 +8,12 @@ var invokeTimes = function(func, noTimes, time) {
 		console.log( "invocation " + count);
 		func(count);
 		count = count + 1;
-		if (count <= noTimes) {
+		if (count < noTimes) {
 			clearInterval(interval);
 		}
 	};
-	interval = setInterval(intervalHandler, time);
+	if (noTimes >0)
+		interval = setInterval(intervalHandler, time);
 };
 
 var setup = function() {
