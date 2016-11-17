@@ -1,0 +1,80 @@
+1. Run mongod on localhost from the mongodb install directory (on mac, you may need to use sudo)
+
+2. Run mongoimport from a separate terminal in the same directory as the dataset as follows:
+
+mongoimport --db test --collection restaurants --file ./dataset.json 
+
+3. Now start the mongo shell as follows in a terminal
+
+mongo
+
+You should see the prompt. Inside the mongo shell type the following:
+
+A. show dbs
+
+You should see the test database listed
+
+B. use test
+
+You should see the message "switched to database test"
+
+C. insert a restaurant as follows
+
+db.restaurants.insert(
+   {
+      "address" : {
+         "street" : "2 Avenue",
+         "zipcode" : "10075",
+         "building" : "1480",
+         "coord" : [ -73.9557413, 40.7720266 ]
+      },
+      "borough" : "Manhattan",
+      "cuisine" : "Italian",
+      "grades" : [
+         {
+            "date" : ISODate("2014-10-01T00:00:00Z"),
+            "grade" : "A",
+            "score" : 11
+         },
+         {
+            "date" : ISODate("2014-01-16T00:00:00Z"),
+            "grade" : "B",
+            "score" : 17
+         }
+      ],
+      "name" : "Vella",
+      "restaurant_id" : "41704620"
+   }
+)
+
+You should see a message like "{ninserted : 1}"
+
+D. List all the restaurants by typing
+
+db.restaurants.find()
+
+and type "it" to scroll the list
+
+E. To find a particular restaurant type
+
+db.restaurants.find( {"grades.score":{ $gt: 30 } } )
+
+E. Remove all restaurants in the Manhattan borough
+
+db.restaurants.find( {"borough":"Manhattan"} )
+db.restaurants.remove( {"borough":"Manhattan"} )
+
+should return WriteResult({ "nRemoved" : 10260 })
+
+F. Update a particular record
+
+db.restaurants.update( {"cuisine": "Hamburgers"}, { $set: {"cuisine" : "American(New)"} } )
+
+G. To update all records type:
+
+db.restaurants.update( {"cuisine": "Hamburgers"}, { $set: {"cuisine" : "American(New)"}, {multi:true} } )
+
+H. To perform a forEach operation
+
+db.restaurants.find().forEach( function(Object) { if (Object.grades.length > 1) printjson(Object.grades) } )
+
