@@ -8,11 +8,11 @@ function ajaxRequest(url, timeout, onSuccess, onFailure) {
 		req.open("GET", url);
 		req.timeout = timeout;
 		req.onerror = function() { 
-			onFailure;
+			onFailure();
 			failures++;
 		}
-		req.ontimeout = req.onError;
-		req.onabort = req.onError; // optional
+		req.ontimeout = req.onerror;
+		req.onabort = req.onerror; // optional
 		req.onload = function() {
 			if (req.status==200) {
 				onSuccess();
