@@ -10,7 +10,7 @@ var Person = function(firstName, lastName, gender) {
 var p1 = new Person("John", "Smith", "Male");
 console.log( p1.firstName );
 console.log( p1["lastName"] );
-console.log( p1.name );
+console.log( p1.name() );
 
 Person.prototype.print = function() { // this is a method of the prototype
 	console.log( this.name() + " " + this.gender );
@@ -21,6 +21,7 @@ console.log(Person.prototype);
 var proto1 = Object.getPrototypeOf(p1);
 console.log(proto1);
 console.log(Object.getPrototypeOf(proto1));
+console.log(Object.getPrototypeOf(Person));
 
 var p2 = new Person("Linda", "James", "Female");
 console.log(p2);
