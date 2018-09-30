@@ -61,20 +61,22 @@ m.increment(1);
 console.log( m );
 console.log( m.getValues() );
 
-// This example is WRONG ! Do NOT use Closures this way !
+// Solution to the class activity correcting the above example using closures
 function MakeCounters(n) {
 	var counters = [];
 	for (var i=0; i<n; i++) {
-		var val = i;
-		counters[i] = {
-			increment: function() { val++; },
- 			get: function() { return val; },
-			reset: function() { val = i; }
-		}
+		counters[i] = function( ) {
+			var initial = i, val = initial;
+			return {	
+				increment: function() { val++; },
+ 				get: function() { return val; },
+				reset: function() { val = initial; }
+			}
+		}();	// Don't forget to call the function
 	}
 	return counters;
 };
-
+	
 var m = MakeCounters(10);
 for (var i=0; i<10; i++) {
 	console.log(m[i]);

@@ -61,23 +61,24 @@ m.increment(1);
 console.log( m );
 console.log( m.getValues() );
 
-// This example is WRONG ! Do NOT use Closures this way !
+// This solves the problem, but adds additional fields to the counters object 
 function MakeCounters(n) {
 	var counters = [];
 	for (var i=0; i<n; i++) {
-		var val = i;
 		counters[i] = {
-			increment: function() { val++; },
- 			get: function() { return val; },
-			reset: function() { val = i; }
+			val : i,
+			initial : i,
+			increment: function() { this.val++; },
+ 			get: function() { return this.val; },
+			reset: function() { this.val = this.initial; }
 		}
 	}
 	return counters;
 };
+
 
 var m = MakeCounters(10);
 for (var i=0; i<10; i++) {
 	console.log(m[i]);
         document.writeln("Counter[ " + i + "] = " + m[i].get());
 }
-	
