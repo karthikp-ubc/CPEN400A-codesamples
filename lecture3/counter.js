@@ -7,15 +7,15 @@ function Adder(val) {
 	}
 };
 
-var f = Adder(5);
-console.log( f(3) );
-console.log( f(5) );
+var f1 = Adder(5);
+console.log( f1(3) );
+console.log( f1(5) );
 
 var f2 = Adder(100);
 console.log( f2(2) );
 console.log( f2(3) );
 
-console.log( f(1) );
+console.log( f1(1) );
 
 // Counter closure returning an object
 function Counter(initial) {
@@ -35,20 +35,19 @@ f.increment();
 g.increment();
 console.log( f.get() + "," + g.get() );
 
-// Closure that keeps a pointer to the enclosing function itself
+// Closure that keeps an array of counters
 function MultiCounter(initial) {
-	var that = this;
 	var val = [];	
-	this.init = function() {
+	var init = function() {
 		val = [];
 		for (var i=0; i<initial.length; i++) {
 			val.push(  initial[i] );
 		};
 	};
-	this.init();
+	init();
 	return {
 		increment: function(i) { val[i] += 1; },
-		resetAll: function() { that.init(); },
+		resetAll: function() { init(); },
 		getValues: function() { return val; }
 	};
 };
@@ -56,8 +55,8 @@ function MultiCounter(initial) {
 var m = MultiCounter( [1, 2, 3] );
 m.increment(0);
 m.increment(2);
-m.increment(0);
 m.resetAll();
+m.increment(0);
 m.increment(1);
 console.log( m );
 console.log( m.getValues() );
