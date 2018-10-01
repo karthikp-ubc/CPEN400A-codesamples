@@ -4,7 +4,7 @@ var filter = function( array, fn ) {
         var result = [];
         for (var i = 0; i < array.length; i++) {
 	    var element = array[i];
-            if (fn(element) result.push(element); 
+            if (fn(element)) result.push(element); 
         }
         return result;
 };
