@@ -3,7 +3,8 @@
 var filter = function( array, fn ) {
         var result = [];
         for (var i = 0; i < array.length; i++) {
-            if (fn(array[i])) result.push(element); 
+	    var element = array[i];
+            if (fn(element) result.push(element); 
         }
         return result;
 };
