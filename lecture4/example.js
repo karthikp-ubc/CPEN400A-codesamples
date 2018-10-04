@@ -1,16 +1,21 @@
-var myVar;
-var i = 0;
+// Example for setTimeout and clearTimeout
 
-function setupTimeout() {
-    	i++;
-	myVar = setTimeout(alertFunc, 3000);
+var timeoutHandler = function(message) {
+	return function( ) {
+		alert(message);
+	}	
 }
 
-function alertFunc() {
-    alert("Hello " + i);
+s = undefined;
+
+var setupTimeout = function( ) {
+	s = setTimeout( timeoutHandler("hello"), 1000 )
 }
 
-function cancelTimeout() {
-	i = 0;
-	clearTimeout(myVar);
+var cancelTimeout = function( ) {
+	if (s != undefined) {
+		clearTimeout(s)
+		alert("Timeout cleared")
+	}
 }
+
