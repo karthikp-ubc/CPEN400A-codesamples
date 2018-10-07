@@ -9,7 +9,7 @@ var timeoutHandler = function(message) {
 s = undefined;
 
 var setupTimeout = function( ) {
-	s = setTimeout( timeoutHandler("hello"), 1000 )
+	s = setTimeout( timeoutHandler("hello"), 5000 )
 }
 
 var cancelTimeout = function( ) {
