@@ -17,5 +17,5 @@ var invokeTimes = function(func, noTimes, time) {
 };
 
 var setup = function() {
-	invokeTimes( function(i) { alert("hello " + i); }, 5, 1000 );
+	invokeTimes( function(i) { alert("hello " + i); }, 10, 1000 );
 }
