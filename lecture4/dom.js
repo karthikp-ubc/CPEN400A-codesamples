@@ -1,4 +1,4 @@
-// Solution to class activity on Slide 32
+// Solution to class activity on Slide 27
 
 var popup = function(name, foo) {
 	return function(e) {

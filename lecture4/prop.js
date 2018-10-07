@@ -1,3 +1,5 @@
+// Code for class activity on Slide 
+
 var bubbleHandler = function(name) {
 	return function(e) {
 		console.log("Bubble handle invoked on : " + name);

@@ -1,4 +1,4 @@
-// Another Solution to the class activity (Slide 20)
+// Another Solution to the class activity (Slide 15)
 // We need to use nested closures to preserve the state here
 
 var invokeTimes = function(func, noTimes, time) {

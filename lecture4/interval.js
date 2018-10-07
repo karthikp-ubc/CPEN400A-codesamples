@@ -1,4 +1,4 @@
-// Solution to the class activity using setItnerval
+// Solution to the class activity using setInterval (slide 15)
 
 var invokeTimes = function(func, noTimes, time) {
 	console.log("Setting up interval " + noTimes + " " + time);
