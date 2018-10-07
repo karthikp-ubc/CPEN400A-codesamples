@@ -12,7 +12,7 @@ var invokeTimes = function(func, noTimes, time) {
 			setTimeout(timeoutHandler, time);
 		}
 	};
-	if (count>0) setTimeout(timeoutHandler, time);
+	if (noTimes>0) setTimeout(timeoutHandler, time);
 };
 
 var setup = function() {
