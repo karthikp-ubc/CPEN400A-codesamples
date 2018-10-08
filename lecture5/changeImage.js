@@ -1,3 +1,5 @@
+// Solution to class activity on slide 17 
+
 var changeImages = function(id,  interval) {
 	var div = document.getElementById(id);
 	var imgtags = div.getElementsByTagName("img");

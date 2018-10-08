@@ -1,3 +1,5 @@
+// Solution to class activity in slide 34  
+
 var wrapGetElementById  = function() {
 	var origGebid = document.getElementById;
 	document.getElementById = function(id) {
@@ -30,9 +32,9 @@ window.onload = function() {
 	var div1 = document.getElementById("one");	
 	var div2 = document.getElementById("two");	
 	var text1 = document.getElementById("five");	
-	console.log(div1.count);
-	console.log(div2.count);
-	console.log(div3.count);
-	console.log(div4.count);
-	console.log(text1.count);
+	console.log("Div1's count = " + div1.count);
+	console.log("Div2's count = " + div2.count);
+	console.log("Div3's count = " + div3.count);
+	console.log("Div4's count = " + div4.count);
+	console.log("Text1's count = " + text1.count);
 };
