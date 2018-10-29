@@ -1,4 +1,4 @@
-// Solution to class activity on Slide 18
+// Solution to class activity on Slide 17
 
 var EventEmitter = require('events').EventEmitter;
 if (! EventEmitter) process.exit(1);
@@ -17,31 +17,29 @@ function registerEvents(emitter, keywords) {
 		emitter.on(keyword, incrementCounter(i) );	
 	}
 	return function() {
-		console.log("Counters: ");	
-		for (var i=0; i<counts.length; i++) {
-			var keyword = keywords[i];
-			console.log("\tCount[ " + keyword + " ]\t=\t" + counts[i]);
-		}
+		return counts;
 	}
 };
 
-// Read the contents of the file and setup the handlers to scan for words
-var text = fs.readFileSync("sample.txt").toString();
+// Initialize an event emitter and setup handlers for the keywords 
 var keywords = ["a", "the", "this", "is", "an", "test"];
-
 var e = new EventEmitter();
-var printCounts = registerEvents(e, keywords);
+var getCounts = registerEvents(e, keywords);
 
 // Read the file contents and emit it to the stream one word at a time
-printCounts();
-// e.emit("the");
-// e.emit("a");
-// e.emit("the");
+var text = fs.readFileSync("sample.txt").toString();
 var words = text.split(" ");
 words.forEach( function(word){
 		e.emit(word.trim());	
 	});
-printCounts();
 
+// Print the list of counters
+var counts = getCounts();
+console.log("Counters: ");	
+for (var i=0; i<counts.length; i++) {
+	var keyword = keywords[i];
+	console.log("\tCount[ " + keyword + " ]\t=\t" + counts[i]);
+}
+console.log("=================");
  
 
