@@ -1,5 +1,8 @@
-// Searches for a given string in a file. Called with two command line arguments: fileName and string to search for.
-// Does not assume length of the string being searched < length of buffer being read at any time 
+// Searches for a given string in a file. 
+// Called with two command line arguments: fileName and string to search for.
+// Does not assume length of the string being searched < length of buffer being read
+// However, it makes another assumption - can you think of what that is ?
+// HINT: Think about prefixes of strings ....
 
 var fs = require('fs');
 if (! fs) process.exit(1);
