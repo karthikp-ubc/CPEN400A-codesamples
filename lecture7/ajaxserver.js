@@ -1,4 +1,7 @@
 // This is the server corresponding to the AJAX client we developed earlier
+// in the AJAX lecture (lecture 6). We'd earlier used a Python server.
+// The main difference is that there is no error introduced here. 
+// Can you add errors and delays as an exercise similar to Python ?
 
 var http = require("http");
 if (! http) process.exit(1);
@@ -10,6 +13,7 @@ var path="./client";
 
 var serveRequest = function(request, response) {
 	if ( request.url.startsWith("/hello") ) {
+		
 		// If it's an AJAX request, return world
 		console.log( "Received " + request.url );
 		setTimeout( function() {
@@ -19,6 +23,7 @@ var serveRequest = function(request, response) {
 			response.end();
 		}, 3000);
 	} else if ( request.url.endsWith(".html") || request.url.endsWith(".js")) {
+		
 		// If it's a HTML or JS file, retrieve the file in the request
 		response.statusCode = 200;
 		var fileName = path + request.url;
@@ -36,6 +41,8 @@ var serveRequest = function(request, response) {
 			response.end();
 		});
 	} else {
+		
+		// It's an unknown request, so return an error message
 		response.write("Unknown request " + request.url);
 		response.statusCode = 404;
 		response.end();
