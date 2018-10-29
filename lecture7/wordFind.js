@@ -1,5 +1,6 @@
-// Searches for a given string in a file. Called with two command line arguments: fileName and string to search for.
-// Assumes that length of the string being searched < length of buffer being read at any time 
+// Searches for a given string in a file. 
+// Called with two command line arguments: fileName and string to search for.
+// Assumption: length of the string being searched < length of buffer being read
 // The above assumption is necessary as it concatenates atmost two buffers
 
 var fs = require('fs');
