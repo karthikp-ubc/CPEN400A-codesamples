@@ -10,5 +10,4 @@ fs.readFile(fileName, function(err, buf) {
 		}
 	}
 );
-
 console.log("End of program");
