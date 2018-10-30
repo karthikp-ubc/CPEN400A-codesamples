@@ -1,4 +1,6 @@
 // This is the server corresponding to the AJAX client we developed earlier
+// It makes use of pipes to directly send the response to the client
+// when it requests a html or JavaScript file - the logic is muc
 
 var http = require("http");
 if (! http) process.exit(1);
