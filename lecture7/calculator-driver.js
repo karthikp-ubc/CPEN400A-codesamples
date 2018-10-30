@@ -1,7 +1,7 @@
 // Example of using modules in node.js
 
-var Calculator = require("./calculate.js");
-var calculator = new Calculator();
+var Calc = require("./calculate.js");
+var calculator = new Calc();
 var c = calculator.sum(10,20);
 console.log(c);
 var d = calculator.add(30);

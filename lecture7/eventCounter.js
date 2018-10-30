@@ -25,6 +25,7 @@ function registerEvents(emitter, keywords) {
 var keywords = ["a", "the", "this", "is", "an", "test"];
 var e = new EventEmitter();
 var getCounts = registerEvents(e, keywords);
+console.log( getCounts() );
 
 // Read the file contents and emit it to the stream one word at a time
 var text = fs.readFileSync("sample.txt").toString();
@@ -32,6 +33,7 @@ var words = text.split(" ");
 words.forEach( function(word){
 		e.emit(word.trim());	
 	});
+console.log( getCounts() );
 
 // Print the list of counters
 var counts = getCounts();

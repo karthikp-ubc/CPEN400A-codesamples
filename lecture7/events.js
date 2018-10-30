@@ -13,20 +13,26 @@ var message = function(msg) {
 	console.log("message : " + msg); 
 };
 
+var testFunc = function(msg) {
+	console.log("test : " + msg); 
+};
+
+
 var myEmitter = new EventEmitter();
 myEmitter.on("connection", connection);
 myEmitter.on("message", message);
+myEmitter.on("test", testFunc);
 
 // test cases for the above
-// should print 1, 2, hello to the console
 myEmitter.emit("connection", 1);
-myEmitter.emit("connection", 2);
 myEmitter.emit("message", "hello");
 
+myEmitter.emit("connection", 2);
 // Because we removed the listener, it shouldn't print world
 myEmitter.removeListener("message", message);
 myEmitter.emit("message", "world");
 
+myEmitter.emit("test", "cpen");
 
 
 
