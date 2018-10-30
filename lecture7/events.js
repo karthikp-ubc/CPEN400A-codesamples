@@ -24,7 +24,7 @@ myEmitter.emit("connection", 2);
 myEmitter.emit("message", "hello");
 
 // Because we removed the listener, it shouldn't print world
-// myEmitter.removeListener("message", message);
+myEmitter.removeListener("message", message);
 myEmitter.emit("message", "world");
 
 
