@@ -22,7 +22,8 @@ readStream.on("data", function(blob) {
 		var str = blob.toString();
 		console.log("Read " + blob.length + " bytes");
 		for (var i=0; i<str.length; ++i) {
-			// Increment matchIndex for every contiguous character that matches
+			// Increment matchIndex 
+			// for every contiguous character that matches
 			if (str[i]== textToFind[matchIndex]) { 
 				matchIndex++;
 				if (matchIndex==textToFind.length) {
@@ -32,7 +33,8 @@ readStream.on("data", function(blob) {
 					break;
 				}
 			} else if (matchIndex > 0){
-				// reset the matchIndex even if a single character doesn't match
+				// reset the matchIndex 
+				// even if a single character doesn't match
 				matchIndex = 0;
 			}
 		}
