@@ -6,6 +6,10 @@ if (! http) throw { msg: "Cannot find http" };
 // Create a simple function to serve a request
 var serveRequest = function(request, response) {
 	console.log("Calling serveRequest : " + request.url );
+	// FIXME: Need to handle data or else it doesn't work	
+	request.on("data", function(data) {
+		console.log("data " + data);
+	} );
 	request.on("end", function() {
 		console.log("Request ended");
 		response.write("Ok");
