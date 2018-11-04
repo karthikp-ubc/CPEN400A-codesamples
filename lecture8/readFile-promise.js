@@ -5,6 +5,7 @@ if (! fs) process.exit(1);
 // It doesn't wait for the read to be complete 
 function readFile(fileName) {
 	return new Promise(function(resolve, reject) {
+		console.log("Creating a new promise");
 		fs.readFile(fileName, function(err, buf) {
 			if (err) {
 				console.log("Rejecting the promise");
