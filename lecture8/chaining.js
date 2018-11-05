@@ -2,14 +2,9 @@
 
 var randomPromise = function(threshold) {
 	console.log("Calling randomPromise");
-	return new Promise( function(resolve, reject) {
-		var r = Math.random();
-		console.log( "Random " + r);	
-		// Resolve the promise after a certain time
-		// Or reject it depending on the coin flip
-		var func = (r > threshold) ? resolve : reject;
-		setTimeout( func, 0 );
-	});
+	var r = Math.random();
+	console.log( "Random " + r);	
+	return (r > threshold) ? Promise.resolve() : Promise.reject(); 	
 };
 
 var p = randomPromise(0.5);
