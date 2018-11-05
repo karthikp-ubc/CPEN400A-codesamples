@@ -1,4 +1,4 @@
-// Example of promises.all
+// Example of promise.all
 
 function valuePromise(value) {
 	console.log("Creating valuePromise " + value);
