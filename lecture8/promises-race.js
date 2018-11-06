@@ -5,7 +5,7 @@ function valuePromise(value) {
 	var r = Math.random();
 	var delay = Math.random() * 1000;
 	return new Promise( function(resolve, reject) {
-		var func = (r>0.2) ? resolve : reject; 
+		var func = (r>0.5) ? resolve : reject; 
 		setTimeout( func.bind(null, value), delay );
 	});
 };
@@ -24,7 +24,7 @@ var result = Promise.race( promises );
 result.then( function(value) {
 	console.log( "Promise resolved : " + value );
 } ).catch( function(value) {
-	console.log("None of the promises resolved");
+	console.log( "Promise rejected : " + value );
 });
 
 console.log("End of program");
