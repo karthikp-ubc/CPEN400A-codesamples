@@ -20,7 +20,7 @@ function readFile(fileName) {
 
 var outputName = "sample-out.txt"
 var p1 = readFile("sample.txt");
-var p2 = readFile("sample2.txt");
+var p2 = readFile("sample.txt");
 
 function doneReading(buf) {
 	console.log("Read " + buf.length + " characters");
@@ -38,7 +38,7 @@ p2.then(doneReading).catch(errorReading);
 var p3 = Promise.all([p1, p2]);
 p3.then( function(bufs) {
 		console.log("Both files read");
-		var concatenated = " ", total = 0;
+		var concatenated = "", total = 0;
 		for (var i=0; i<bufs.length; i++) {
 			concatenated = concatenated + bufs[i];
 			total += bufs[i].length;

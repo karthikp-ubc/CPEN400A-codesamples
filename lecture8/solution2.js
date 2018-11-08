@@ -18,9 +18,11 @@ function readFile(fileName) {
 	}); // End of promise
 };
 
+
+
 var outputName = "sample-out.txt"
 var p1 = readFile("sample.txt");
-var p2 = readFile("sample2.txt");
+var p2 = readFile("sample.txt");
 
 function doneReading(buf) {
 	console.log("Read " + buf.length + " characters");
@@ -28,15 +30,17 @@ function doneReading(buf) {
 		if (err) throw Error("Error writing file: " + err);			
 	});
 	console.log("Done writing");
-	return buf;
 };
 
-function errorReading(err) {
+function errorFunc(err) {
 	console.log("Error reading or writing file " + err);
-	return null;
+	throw new Error(err);
 };
 
-p1.then(doneReading).catch(errorReading);
-p2.then(doneReading).catch(errorReading);
+fs.open(outputName,"w", function(err, file) { 
+	if (err) errorFunc();
+	p1.then(doneReading).catch(errorFunc);
+	p2.then(doneReading).catch(errorFunc);
+});
 
 console.log("End of program");
