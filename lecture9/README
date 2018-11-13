@@ -68,12 +68,13 @@ should return WriteResult({ "nRemoved" : 10260 })
 
 F. Update a particular record
 
-db.restaurants.update( {"cuisine": "Hamburgers"}, { $set: {"cuisine" : "American(New)"} } )
+db.restaurants.update( {"cuisine": "Pizza"}, { $set: {"cuisine" : "American(New)"} } )
 
 G. To update all records type:
 
 db.restaurants.update( {"cuisine": "Hamburgers"}, { $set: {"cuisine" : "American(New)"}, {multi:true} } )
 
+you should see a message like 
 H. To perform a forEach operation
 
 db.restaurants.find().forEach( function(Object) { if (Object.grades.length > 1) printjson(Object.grades) } )
