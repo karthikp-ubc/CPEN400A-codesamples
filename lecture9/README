@@ -47,7 +47,7 @@ db.restaurants.insert(
    }
 )
 
-You should see a message like "{ninserted : 1}"
+You should see a message like "{nInserted : 1}"
 
 D. List all the restaurants by typing
 
