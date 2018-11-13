@@ -70,11 +70,18 @@ F. Update a particular record
 
 db.restaurants.update( {"cuisine": "Pizza"}, { $set: {"cuisine" : "American(New)"} } )
 
+You should see a message like
+
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
 G. To update all records type:
 
-db.restaurants.update( {"cuisine": "Pizza"}, { $set: {"cuisine" : "American(New)"}, {multi:true} } )
+db.restaurants.update( {"cuisine": "Pizza"}, { $set: {"cuisine" : "American(New)"}}, {multi:true} )
 
 you should see a message like 
+
+WriteResult({ "nMatched" : 1647, "nUpserted" : 0, "nModified" : 1647 })
+
 H. To perform a forEach operation
 
 db.restaurants.find().forEach( function(Object) { if (Object.grades.length > 1) printjson(Object.grades) } )
