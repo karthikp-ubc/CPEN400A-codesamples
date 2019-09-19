@@ -14,7 +14,7 @@ p.gender = "female";
 p.print();
 console.log(p);
 console.log( Object.getPrototypeOf(p) );
-console.log( p.prototype );	
+console.log( Person.prototype );	
 
 var e = Object.create(Person, {
 		firstName: {value: "John"},
