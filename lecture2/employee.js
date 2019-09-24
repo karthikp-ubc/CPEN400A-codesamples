@@ -52,7 +52,7 @@ e1.print();
 p1.print();
 p2.print();
 
-// Employee.prototype = Object.prototype;
+Employee.prototype = Object.prototype;
 
 // Check the instances and the prototypes
 console.log(e1 instanceof Employee);
@@ -70,14 +70,26 @@ console.log(p2 instanceof Object);
 console.log( "firstName" in p1 );
 console.log( "lastName" in p1 );
 console.log( "title" in p1 );
+console.log( "print" in p1 );
 
 console.log( "firstName" in e1 );
 console.log( "lastName" in e1 );
 console.log( "title" in e1 );
+console.log( "print" in e1 );
 
 console.log( p1.hasOwnProperty("firstName") );
 console.log( p1.hasOwnProperty("lastName") );
 console.log( p1.hasOwnProperty("print") );
+console.log( p1.hasOwnProperty("title") );
+console.log( proto1.hasOwnProperty("print") );
 console.log( e1.hasOwnProperty("firstName") );
 console.log( e1.hasOwnProperty("lastName") );
+console.log( e1.hasOwnProperty("print") );
+console.log( e1.hasOwnProperty("title") );
+
+delete e1.title;
+delete e1.firstName;
+delete e1.print;
+console.log( e1.hasOwnProperty("title") );
+console.log( e1.hasOwnProperty("firstName") );
 console.log( e1.hasOwnProperty("print") );
