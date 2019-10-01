@@ -28,11 +28,10 @@ var add2 = function(p1, p2) {
 };
 
 var addAll = function() {
-	var p = Object.create(this);
-	p.x = 0; p.y = 0;
+	var p = new Point(0, 0);
 	for (var i = 0; i < arguments.length; i++) {
 		var point = arguments[i];
-		if (Object.getPrototypeOf(point)!=this) {
+		if (Object.getPrototypeOf(point)!=Point.prototype) {
 			throw { name: TypeError, 
 				message: "Object " + point + " is not of type point", 
 				result: p
@@ -63,12 +62,12 @@ var res3 = add2.call( Object.getPrototypeOf(p1), p1, p2 );
 console.log(res3); 
 document.writeln("Add2 of p1 and p2 = res3 = " + res3);
 
-var res4 = addAll.call( Object.getPrototypeOf(p1), p1, p2, res1, res2, res3);
+var res4 = addAll(p1, p2, res1, res2, res3);
 console.log(res4); 
 document.writeln("AddAll of p1,p2, res1, res2 and res3 = res4 = " + res4);
 
 try {
-	var res5 = addAll.call( Object.getPrototypeOf(p1), p1, p2, "notapoint", res2, res3);
+	var res5 = addAll( p1, p2, "notapoint", res2, res3);
 } catch (e) {
 	document.writeln(e.name + " : " + e.message);
 	res5 = e.result;
