@@ -25,7 +25,7 @@ function CancelInflight(inflight) {
 }
 
 var RequestCount = function(msg, inflight) {
-	var count = 0;
+	var count = 0; 
 	var sendRequest = function() {
 		var xhr = new XMLHttpRequest();
 		var name = "XHR " + count;
@@ -44,7 +44,8 @@ var RequestCount = function(msg, inflight) {
 			if (xhr.status==200) {
 				console.log(name + " : Received " + xhr.responseText);
 			} else {	
-				console.log(name + " : Received error code : " + xhr.status);
+				console.log(name + " : Received error code : " 
+						+ xhr.status);
 			}
 			removeFromList();
 		};		
@@ -66,7 +67,7 @@ var RequestCount = function(msg, inflight) {
 		// All the handlers are setup, so send the message
 		xhr.timeout = 5000;	 // Wait at most 5000 ms for a response
 		console.log("Sending request " + xhr);
-		inflight.push(xhr);	 // Add it to the inflight messages before sending it
+		inflight.push(xhr);	 // Add it to the inflight messages list
 		xhr.send();
 	}
 	return sendRequest;
@@ -77,8 +78,10 @@ window.onload = function() {
 	var ok = document.getElementById("OK");
 	var count = 0
 	var inflight = [];
-	ok.addEventListener("click", RequestCount("/hello", inflight), false);	// sendRequest upon button click		
+	ok.addEventListener("click", 
+		RequestCount("/hello", inflight), false); // sendRequest upon  click
 	var cancel = document.getElementById("Cancel");
-	cancel.addEventListener("click", CancelInflight(inflight), false);	// cancel last sent request
-	setInterval(displayInFlight(inflight), 1000);			// Display the inflight list
+	cancel.addEventListener("click", 
+		CancelInflight(inflight), false);	// cancel last sent request
+	setInterval(displayInFlight(inflight), 1000);	// Display the inflight list
 }
