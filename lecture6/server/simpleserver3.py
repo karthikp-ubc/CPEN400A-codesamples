@@ -3,8 +3,8 @@
 # NOTE: This must be invoked only from the /client directory
 
 
-import SimpleHTTPServer
-import SocketServer
+import http.server
+import socketserver
 import random
 from time import sleep
 
@@ -21,7 +21,7 @@ errorProb = 0.50  # If so, with what probability should we introduce errors
 # End of configuration - change the code below only if you know what you're doing
 
 
-class MyRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
+class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
     def do_GET(self):
         if self.path.startswith('/hello'):
             # If it's an AJAX request - send a response
@@ -42,14 +42,14 @@ class MyRequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
 
             # Extract the message number and send it back
             count = self.path.split('-')[1]
-            self.wfile.write("World" + count)  # call sample function here
+            self.wfile.write(bytes("World" + count, 'utf-8'))  # call sample function here
             return
         else:
             # It's a request for a file - return the file
-            return SimpleHTTPServer.SimpleHTTPRequestHandler.do_GET(self)
+            return http.server.SimpleHTTPRequestHandler.do_GET(self)
 
 
 Handler = MyRequestHandler
-server = SocketServer.TCPServer(('0.0.0.0', PORT), Handler)
-print "Starting server on port", PORT
+server = socketserver.TCPServer(('0.0.0.0', PORT), Handler)
+print("Starting server on port", PORT)
 server.serve_forever()
