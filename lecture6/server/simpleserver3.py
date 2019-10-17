@@ -42,7 +42,7 @@ class MyRequestHandler(http.server.SimpleHTTPRequestHandler):
 
             # Extract the message number and send it back
             count = self.path.split('-')[1]
-            self.wfile.write("World" + count)  # call sample function here
+            self.wfile.write(bytes("World" + count, 'utf-8'))  # call sample function here
             return
         else:
             # It's a request for a file - return the file
