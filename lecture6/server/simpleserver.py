@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # Simple HTTP server to test node.js applications with AJAX
-# NOTE: This must be invoked on the /client directory
+# NOTE: This must be invoked only from the /client directory
 
 
 import SimpleHTTPServer
@@ -12,10 +12,10 @@ PORT = 8080	# Port to connect to
 
 # Begin configuration - change these parameters for the server to have interesting behaviors
 
-delay = True		# Should there be a delay ?
+delay = False		# Should there be a delay ?
 minDelay = 0 		# if so, the minimum delay in seconds
 maxDelay = 5 		# if so, the maximum delay in seconds
-introduceError = True 	# Should we have the server returning an error
+introduceError = False 	# Should we have the server returning an error ?
 errorProb = 0.50	# If so, with what probability should we introduce errors
 
 # End of configuration - change the code below only if you know what you're doing
