@@ -3,7 +3,7 @@
 function valuePromise(value) {
 	console.log("Creating valuePromise " + value);
 	var r = Math.random();
-	return new Promise( function(resolve, reject) {
+	return new Promise( (resolve, reject) => {
 		var func = (r>0.1) ? resolve : reject; 
 		func(value);
 	});
@@ -20,7 +20,7 @@ for (var i=0; i<n; i++) {
 var result = Promise.all( promises );
 
 // Add a resolution function to get the values of each promise
-result.then( function(values) {
+result.then( (values) => {
 	console.log("All promises resolved");
 	for (var j=0; j<values.length; j++)
 		console.log( "Promise " + j + " returned " + values[j] );
