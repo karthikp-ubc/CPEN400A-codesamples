@@ -1,21 +1,22 @@
 // Simple example of promises
 
-var p = new Promise( function(resolve, reject) {
+var action = new Promise( (resolve, reject) => {
 		console.log("Enter Executor function");
-		var r = Math.random() * 10;
-		foo = (r > threshold) ? resolve : reject;
 		var deferred = function() { 
+			console.log("Promise started");
+			var r = Math.random() * 10;
+			if (r > 5)	
+			     resolve("Success");
+			else 
+			     reject("Error");
 			console.log("Promise executed");
-			foo();
 		}
-		setTimeout( foo, delay );
+		setTimeout( deferred, 1000 );
 		console.log("Exit Executor function");
-	};
+	});
 
-p.then( function() { 
-		console.log("Resolved");
-	}, function() {
-		console.log("Rejected");
+action.then( (result) => { console.log("Resolved " + result); }, 
+	(error) => { console.log("Rejected " + error); }
 );
 
 console.log("End of program");	 	
