@@ -4,7 +4,7 @@ function valuePromise(value) {
 	console.log("Creating valuePromise " + value);
 	var r = Math.random();
 	return new Promise( (resolve, reject) => {
-		var func = (r>0.1) ? resolve : reject; 
+		var func = (r>0.5) ? resolve : reject; 
 		func(value);
 	});
 };
@@ -24,7 +24,7 @@ result.then( (values) => {
 	console.log("All promises resolved");
 	for (var j=0; j<values.length; j++)
 		console.log( "Promise " + j + " returned " + values[j] );
-	} ).catch( function(value) {
+	} , function(value) {
 		console.log("Promise not resolved " + value); 
 	}
 );

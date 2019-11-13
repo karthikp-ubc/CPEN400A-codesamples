@@ -4,7 +4,7 @@ function resolveAfter(time){
     return new Promise( (resolve, reject) => {
 		var foo = () => { 
 			var r = Math.random();
-			if (r > 0.5) resolve(time);
+			if (r > 0.1) resolve(time);
 				else reject("Unknown");
 			console.log(time);
 		}		
@@ -17,4 +17,5 @@ function resolveAfter(time){
 resolveAfter(500)
 	.then( (x) => resolveAfter(x + 500) )
 	.then( (x) => resolveAfter(x + 500) )
-	.catch( (error) => { console.log("Error " + error); } ); 
+	.catch( (error) => { console.log("Error " + error); } )
+	.finally( () => { console.log("Finally"); } ); 

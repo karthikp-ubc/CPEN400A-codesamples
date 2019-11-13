@@ -10,5 +10,6 @@ function resolveAfter(time){
 
 // Make the program print 500, 1000, 1500 
 resolveAfter(500)
-.then(()=> resolveAfter(1000))
-.then(()=> resolveAfter(1500));
+.then(() => resolveAfter(1000))
+.then(() => resolveAfter(1500))
+.catch(() => console.log("Error") );

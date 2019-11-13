@@ -16,8 +16,8 @@ var action = new Promise( (resolve, reject) => {
 	});
 
 action.then( (result) => 
-	{ return new Promise( (resolve, reject) => resolve("Action resolved") ); }, 
-	(error) => { throw new Error("Action rejected ") ; }
+	{ return new Promise( (resolve, reject) => resolve() ); }, 
+	(error) => { throw new Error() ; }
 ).then( (result) => { console.log("Success: " + result); } 
 ).catch( (error) => { console.log("Error: " + error.message); }
 ).finally( () => { console.log("Finally done"); } );
