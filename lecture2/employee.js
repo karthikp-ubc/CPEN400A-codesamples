@@ -22,6 +22,7 @@ var proto1 = Object.getPrototypeOf(p1);
 console.log(proto1);
 console.log(Object.getPrototypeOf(proto1));
 console.log(Object.getPrototypeOf(Person));
+console.log(proto1.print);
 
 var p2 = new Person("Linda", "James", "Female");
 console.log(p2);
