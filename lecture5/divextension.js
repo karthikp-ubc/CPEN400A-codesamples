@@ -14,7 +14,8 @@ var wrapGetElementById  = function() {
 
 var initDivElements = function() {
 	var divs = document.getElementsByTagName("div");
-	for (var i = 0; i < divs.length; i++) {					   var div = divs[i];
+	for (var i = 0; i < divs.length; i++) {					   
+		var div = divs[i];
 		div.count = 0;
 		console.log(div.count);
 	}

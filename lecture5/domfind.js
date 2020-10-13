@@ -32,4 +32,5 @@ window.onload = function() {
 	var start = document.getElementById("one"); 	
 	find(start, " This ");
 	find(start, " his ");
+	find(start, "test webpage.");
 };
