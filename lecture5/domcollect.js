@@ -39,6 +39,6 @@ var concatenateSiblings = function(id, includeSubtrees) {
 
 window.onload = function() {
 	// Concatenate the siblings of text nodes rooted at node one
-	var str = concatenateSiblings("one", true);
+	var str = concatenateSiblings("two", true);
 	console.log(str);
 };

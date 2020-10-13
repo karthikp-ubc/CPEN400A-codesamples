@@ -21,6 +21,12 @@ var initDivElements = function() {
 	}
 };
 
+var testFunc = function(count, str) {
+	for (var i=0; i<count; ++i) {
+		document.getElementById(str);
+	}
+}
+
 window.onload = function() {
 	initDivElements();
 	wrapGetElementById();
@@ -28,10 +34,12 @@ window.onload = function() {
 	var div2 = document.getElementById("two");	
 	var div3 = document.getElementById("three");	
 	var div4 = document.getElementById("four");	
-	var div1 = document.getElementById("one");	
-	var div1 = document.getElementById("one");	
-	var div2 = document.getElementById("two");	
-	var text1 = document.getElementById("five");	
+	var text1 = document.getElementById("five");
+	testFunc(10, "one");
+	testFunc(3, "two");
+	testFunc(5, "three");
+	testFunc(7, "four");
+	testFunc(9, "five");	
 	console.log("Div1's count = " + div1.count);
 	console.log("Div2's count = " + div2.count);
 	console.log("Div3's count = " + div3.count);
