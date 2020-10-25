@@ -1,5 +1,5 @@
 // Program to generate a generator that matches a string upto a given word and returns the 
-// rest of the text as a generator itself. It should only do the matching on demand. 
+// index of the next match in each subsequent call to it. It should only do the matching on demand. 
 
 var fs = require("fs");
 if (! fs) process.exit(1);
