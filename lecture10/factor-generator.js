@@ -1,5 +1,5 @@
 // Generate all the factors of a given number in ascending order until that number
-// Recusrive implementation
+// Non-Recusrive implementation
 
 function *factorGen(num) {
     if (num<=0) throw("number must be > 0");
