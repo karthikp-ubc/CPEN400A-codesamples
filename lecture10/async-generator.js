@@ -15,7 +15,7 @@ function* executeAsync(functions, delay) {
 
 var funcs = [];
 for (var i = 0; i<10; i++) {
-    funcs.push( (i) => { return i; } );
+    funcs.push( (i) => i );
 }
 var execGen = executeAsync(funcs, 1000);
 for (eg of execGen) {
