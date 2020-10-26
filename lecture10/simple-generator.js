@@ -1,18 +1,19 @@
-// Simple generator to generate a random sequence of numbers
+// Simple generator to generate an infinite sequence of numbers from a, with step size b
 
-function* generateRandom(max) {
-    console.log("Setting up generator with max value" + max);
+function* generateSequence(a, b) {
+    console.log("Setting up generator");
+    var num = a;
     while (true) {
-        console.log("Generating random no. ")
-        var l = Math.round(Math.random() * max);
-        yield l;
+        console.log("Generating next number ")
+        yield num;
+        num = num + b;
     }
     // Control should never reach here
     assert(false);
 }
 
-var rg = generateRandom(10);
+var sg = generateSequence(100, 10);
 for (var i=0; i<10; ++i) {
-    var r = rg.next();
-    console.log(i + " : " + r.value);
+    var s = sg.next();
+    console.log(i + " : " + s.value);
 }
