@@ -21,9 +21,8 @@ function countMatches(fileName, match) {
        if (! err) {
            console.log("Setting up wordMatch", data.length)
            var wg = wordMatchGen(data, match);
-           while (! (wg.next()).done) {
+           for (w of wg) 
                 wordCount++;
-           }
            console.log("Number of matches = " + wordCount);
        } else 
            console.log(err);
