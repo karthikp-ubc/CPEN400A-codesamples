@@ -5,7 +5,7 @@ function* listIterator(items) {
     for (var i = 0; i < items.length; ++i) {
         yield( items[i] );
     }
-    // Reached end of list, so do nothing
+    return i;    // Return the number of elements iterated over
 }
 
 // List of names to iterate over
@@ -16,16 +16,19 @@ names = ["John", "Linda", "James", "Xavier", "Melanie"];
 console.log("Starting iteration method 1");
 var lg = listIterator(names);
 var l;
-// The ugly way of iterating with the generator
+
+// The ugly way of iterating with the generator, but gets final value
 while ( !(l = lg.next()).done) {
     console.log("Next: " + l.value);
 }
-console.log("Reached end of list");
+console.log("Number of elements iterated over " + l.value);
 
 console.log("Starting iteration method 2");
 var lg_redux = listIterator(names);
-// The cleaner way to do the iteration
+
+// The cleaner way to do the iteration, but can't get final value
 for (var l of lg_redux) {
     console.log("Next: " + l);
 }
-console.log("Reached end of list");
+console.log("Number of elements iterated over " + l.value);
+
