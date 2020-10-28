@@ -39,44 +39,44 @@ answer the questions below).
 
 **Q1a. Which of the rules has the highest priority for H1?**
 
-[x] #one { color: red; }
+- [x] #one { color: red; }
 
-[ ] .A { color: blue; }
+- [ ] .A { color: blue; }
 
-[ ] div.A div.B { color: green; }
+- [ ] div.A div.B { color: green; }
 
-[ ] div.A #five { color:orange; }
+- [ ] div.A #five { color:orange; }
 
 
 **Q1b. Which of the rules has the highest priority for H2?**
 
-[ ] #one { color: red; }
+- [ ] #one { color: red; }
 
-[ ] .A { color: blue; }
+- [ ] .A { color: blue; }
 
-[x] div.A div.B { color: green; }
+- [x] div.A div.B { color: green; }
 
-[ ] div.A #five { color:orange; }
+- [ ] div.A #five { color:orange; }
 
 **Q1c. Which of the rules has the highest priority for H3?**
 
-[ ] #one { color: red; }
+- [ ] #one { color: red; }
 
-[x] .A { color: blue; }
+- [x] .A { color: blue; }
 
-[ ] div.A div.B { color: green; }
+- [ ] div.A div.B { color: green; }
 
-[ ] div.A #five { color:orange; }
+- [ ] div.A #five { color:orange; }
 
 **Q1d. Which of the rules has highest priority for p?**
 
-[ ] #one { color: red; }
+- [ ] #one { color: red; }
 
-[ ] .A { color: blue; }
+- [ ] .A { color: blue; }
 
-[ ] div.A div.B { color: green; }
+- [ ] div.A div.B { color: green; }
 
-[x] div.A #five { color:orange; }
+- [x] div.A #five { color:orange; }
 
 ---
 
@@ -84,26 +84,26 @@ answer the questions below).
 { color:blue; }`. Which of the elements undergo a change in color
 as a result of adding this rule?**
 
-[ ] H1
+- [ ] H1
 
-[ ] H2
+- [ ] H2
 
-[ ] H3
+- [ ] H3
 
-[ ] p
+- [ ] p
 
-[x] None of the above
+- [x] None of the above
 
 **Q2b. Now assume that after adding the rule `#two .B { color:blue;}`,
 we remove CSS rule #4. Now, which of the elements will undergo a
 change in color?**
 
-[ ] H1
+- [ ] H1
 
-[ ] H2
+- [ ] H2
 
-[ ] H3
+- [ ] H3
 
-[x] p
+- [x] p
 
-[ ] None of the above
+- [ ] None of the above
