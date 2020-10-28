@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Sample Title</title>
+  <script>
+  function runTest(){
+    document.querySelector('#test-message').innerHTML = ['#t1', '#t2', '#t3', '#t4', '#t5'].map(id => {
+      try {
+        let result = wrapTest(document.querySelector(id), 'foo');
+        return `Wrapped <b>${result}</b> nodes in ${id}`;
+      }
+      catch (err){
+        return err.toString();
+      }
+    }).join('<br/>');
+  };
+  function reset(){
+    document.querySelector('#test-area').innerHTML = `
+<div class="test-box">
+  <h4>#t1 (1 node to wrap)</h4>
+  <div id="t1">
+    Wrap me 1
+  </div>
+</div>
+<div class="test-box">
+  <h4>#t2 (2 nodes to wrap)</h4>
+  <div id="t2">
+    <div>
+      Wrap me 1
+    </div>
+    <div class="bar">
+      Wrap me 2
+    </div>
+  </div>
+</div>
+<div class="test-box">
+  <h4>#t3 (4 nodes to wrap)</h4>
+  <div id="t3">
+    <div>
+      Wrap me 1
+      <div class="bar">
+        Wrap me 2
+      </div>
+      <span>
+        Wrap me 3
+      </span>
+    </div>
+    <div class="bar">
+      Wrap me 4
+      <div class="foo">
+        Skip me 1
+      </div>
+    </div>
+  </div>
+</div>
+<div class="test-box">
+  <h4>#t4 (10 nodes to wrap)</h4>
+  <div id="t4">
+    <div class="foo bar">
+      Skip 1
+      <div>
+        Skip 2 <p>Skip 3</p>
+      </div>
+    </div>
+    <div>
+      Wrap 1
+      <ul>
+        <li>Wrap 2 <span>Wrap 3</span> Wrap 4</li>
+        <li class="bar foo">Skip 4 <span>Skip 5</span> Skip 6</li>
+        <li>Wrap 5 <span>Wrap 6</span> Wrap 7</li>
+        <li>
+          <div>
+            <h4>Wrap 8</h4>
+            Wrap 9
+          </div>
+        </li>
+      </ul>
+      Wrap 10
+    </div>
+  </div>
+</div>
+<div class="test-box">
+  <h4>#t5 (8 nodes to wrap)</h4>
+  <div id="t5">
+    Wrap 1
+    <p>Wrap 2</p>
+    Wrap 3
+    <div>
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <b>Wrap 4</b>
+              </div>
+              <div>
+                <b>Wrap 5</b>
+                <p class="foo">Skip 1</p>
+              </div>
+            </div>
+            <div>
+              <b>Wrap 6</b>
+            </div>
+          </div>
+          Wrap 7
+        </div>
+      </div>
+    </div>
+
+    
+    <span>Wrap 8</span>
+  </div>
+</div>`;
+    document.querySelector('#test-message').innerHTML = [['#t1',1], ['#t2',2], ['#t3',4], ['#t4',10], ['#t5',8]].map(item => `There are <b>${item[1]}</b> nodes to wrap in ${item[0]}`).join('<br/>');
+  };
+  window.addEventListener('load', () => reset());
+  </script>
+</head>
+<body>
+  <div id="test-control">
+    <button id="test-button" onclick="runTest()">Test</button>
+    <button id="reset-button" onclick="reset()">Reset</button>
+    <p id="test-message"></p>
+  </div>
+  
+  <div id="test-area"></div>
+  
+</body>
+</html>
