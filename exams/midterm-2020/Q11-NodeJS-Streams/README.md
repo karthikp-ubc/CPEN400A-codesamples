@@ -45,7 +45,7 @@ removeComments(process.stdin, process.stdout, function(){
 
 You can think of the program as a state machine, as illustrated in the diagram below.
 
-![Finite State Machine](q11-fsm.png)
+<img src="q11-fsm.png" width="640"/>
 
 ```javascript
 'use strict';
