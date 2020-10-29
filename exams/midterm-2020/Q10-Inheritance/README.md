@@ -1,5 +1,7 @@
-Given the `Shape` class in the code provided (line 33\~42), implement a subclass `Rectangle` using construction functions.
+## Question
 
+Given the `Shape` class in the code provided (line 33\~42), implement a subclass `Rectangle` using construction functions.
+ 
 In the `Rectangle` class, the constructor should *additionally* accept 2 arguments `width` and `height`, and assign them as `width` and `height` properties of the instance.
 
 The `Rectangle` class should override the methods `area` and `perimeter`, returning the appropriate values. 
@@ -86,5 +88,31 @@ function runTest(checkFunc, tX, tY) {
     let translated2 = rects.reduce((acc, r, i) => acc && (checkFunc(originals[i]) ? r.x === originals[i].x + tX && r.y === originals[i].y + tY : r.x === originals[i].x && r.y === originals[i].y), true);
     
     process.stdout.write(String(isShape && valSet && areaOK && periOK && translated && translated2));
+}
+```
+
+
+## Solution
+
+```javascript
+function Rectangle(x, y, width, height){
+    Shape.call(this, x, y);
+    this.width = width;
+    this.height = height;
+}
+Rectangle.prototype = Object.create(Shape.prototype);
+Rectangle.prototype.constructor = Rectangle;
+Rectangle.prototype.area = function(){
+    return this.width * this.height;
+}
+Rectangle.prototype.perimeter = function(){
+    return 2 * this.width + 2 * this.height;
+}
+
+
+function translateMatchingRectangles(rectangles, check, x, y) {
+    rectangles.filter(check).forEach(function (rect){
+        rect.translate(x, y);
+    });
 }
 ```
