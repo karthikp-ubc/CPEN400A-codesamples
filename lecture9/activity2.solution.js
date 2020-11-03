@@ -14,7 +14,8 @@ function readFile (filepath){
 
 readFile("example-blob")
 .then((result)=> console.log("File is " + result.length + " Bytes"))
-.catch((error)=> console.log("Error while reading file"));
+.catch((error)=> console.log("Error while reading file"))
+.finally( () => console.log("All done") );
 
 // readFile("example-blob")
 // .then((result)=> console.log("File is " + result.length + " Bytes"))
