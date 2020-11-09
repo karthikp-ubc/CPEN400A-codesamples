@@ -28,6 +28,7 @@ p3.then( function(bufs) {
 		fs.writeFile(outputName, concatenated, (err) => {
 			if (err) throw Error("Error writing file: " + err);			
 		});
+		console.log("Total number of bytes " + total);
 	}
 ).catch( function(error) {
 	console.log("Encountered error " + error.message);

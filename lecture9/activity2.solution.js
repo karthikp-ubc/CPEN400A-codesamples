@@ -12,7 +12,7 @@ function readFile (filepath){
 
 // testing the functionality
 
-readFile("example-blob")
+readFile("sample.txt")
 .then((result)=> console.log("File is " + result.length + " Bytes"))
 .catch((error)=> console.log("Error while reading file"))
 .finally( () => console.log("All done") );

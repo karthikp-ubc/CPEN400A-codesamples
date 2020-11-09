@@ -3,7 +3,7 @@ function resolveAfter(time){
     return new Promise((resolve, reject)=> {
         setTimeout(()=> {
             console.log(time);
-            resolve(time);
+            re(time);
         }, time);
     });
 }
