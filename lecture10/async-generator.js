@@ -3,12 +3,14 @@
 
 function* executeAsync(functions, delay) {
     for (var i=0; i<functions.length; ++i) {
-        var func = functions[i];
+        
         yield new Promise( (resolve, reject) => {
             var arg = i;
+            console.log("Promise setup " + i);
+            var func = functions[i];
             setTimeout(() => { 
                 resolve( func(arg) ); 
-            }, delay * i);
+            }, delay * (i+1));
         })
     }
 }

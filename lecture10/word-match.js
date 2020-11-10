@@ -5,7 +5,7 @@ var fs = require("fs");
 if (! fs) process.exit(1);
 
 function* wordMatchGen(text, word) {
-    console.log("Starting generator to find " + word)
+    console.log("Starting generator o " + word)
     var index = 0;
     while ( (index = text.indexOf(word)) >= 0 ) { 
         // Replace the current text with the text after the word is found
@@ -29,6 +29,6 @@ function countMatches(fileName, match) {
     });
 };
 
-countMatches("sample2.txt", "This");
+countMatches("sample2.txt", "the");
 
 
