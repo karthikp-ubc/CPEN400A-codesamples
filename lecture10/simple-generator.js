@@ -13,7 +13,7 @@ function* generateSequence(a, b) {
 }
 
 var sg = generateSequence(100, 10);
-for (var i=0; i<10; ++i) {
+for (var i=0; i<20; ++i) {
     var s = sg.next();
     console.log(i + " : " + s.value);
 }

@@ -10,7 +10,7 @@ function *factorGen(num) {
     if (num>1) yield num;
 }
 
-var fg = factorGen(1000);
+var fg = factorGen(100);
 try {
     for (x of fg) {
         console.log("Factor: " + x);

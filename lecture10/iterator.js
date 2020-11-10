@@ -27,8 +27,8 @@ console.log("Starting iteration method 2");
 var lg_redux = listIterator(names);
 
 // The cleaner way to do the iteration, but can't get final value
-for (var l of lg_redux) {
+for (l of lg_redux) {
     console.log("Next: " + l);
 }
-console.log("Number of elements iterated over " + l.value);
+console.log("Number of elements iterated over " + l);
 
