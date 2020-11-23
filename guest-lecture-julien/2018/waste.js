@@ -5,7 +5,7 @@ function sendRequest() {
 
     var start = Date.now();
 
-	http.get("http://localhost:8080/cycles", function(remoteResponse) {
+	http.get("http://localhost:8079/cycles", function(remoteResponse) {
 
         remoteResponse.on('data', function(d) {
 
