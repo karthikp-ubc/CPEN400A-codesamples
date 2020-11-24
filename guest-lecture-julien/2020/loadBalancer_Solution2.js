@@ -53,8 +53,8 @@ var loadBalance = function(request, response) {
     }
 
     //naiveLoadBalancing();
-    roundRobinLoadBalancing();
-    //optimalLoadBalancing();
+    //roundRobinLoadBalancing();
+    optimalLoadBalancing();
     console.log("Chose server " + currentServer + " | load: " + cloudServers[currentServer].load);
     
     var reqPort = cloudServers[currentServer].port;
