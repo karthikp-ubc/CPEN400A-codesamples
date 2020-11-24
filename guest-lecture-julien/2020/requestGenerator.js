@@ -23,4 +23,4 @@ function sendRequest() {
 
 }
 
-setInterval(sendRequest, 125);
+setInterval(sendRequest, 100);

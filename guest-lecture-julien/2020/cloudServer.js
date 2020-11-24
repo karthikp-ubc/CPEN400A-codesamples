@@ -3,6 +3,8 @@ var fs = require('fs');
 
 var timeMin = 200;
 var timeMax = 700;
+// Generate a random processing time for that server
+var processingTime = getRndInteger(timeMin, timeMax);
 
 // Active requests
 var requests = [];
@@ -14,7 +16,7 @@ function getRndInteger(min, max) {
 }
 
 function executeLater(timeMin, timeMax, f) {
-    var time = getRndInteger(timeMin, timeMax);
+    var time = processingTime;
     setTimeout(f, time);
 }
 
@@ -79,7 +81,7 @@ function processNextRequest() {
     processing = false; // not processing anymore
     
     // Check if there is a request in the queue
-    if (requests.length > 1) {
+    if (requests.length >= 1) {
 	var nextReq = requests.shift();
 	// Process it
 	serveRequest(nextReq.request, nextReq.response);
@@ -88,7 +90,7 @@ function processNextRequest() {
 
 function publishLoad() {
     try {
-	http.get("http://localhost:8079/load/" + port + "?load=" + requests.length, function(remoteResponse) {
+	http.get("http://localhost:8079/load/" + port + "?" + requests.length, function(remoteResponse) {
             remoteResponse.on('data', function(d) {
             });
             remoteResponse.on('end', function() {
@@ -116,4 +118,4 @@ var server = http.createServer(serveRequest);
 server.listen(port);
 console.log("Starting server on port " + port);
 
-setInterval(publishLoad, 1000);
+setInterval(publishLoad, 50);

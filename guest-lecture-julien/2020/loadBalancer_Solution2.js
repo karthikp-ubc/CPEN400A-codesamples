@@ -52,18 +52,28 @@ var loadBalance = function(request, response) {
 	return;
     }
 
-    naiveLoadBalancing();
-    //roundRobinLoadBalancing();
+    //naiveLoadBalancing();
+    roundRobinLoadBalancing();
     //optimalLoadBalancing();
     console.log("Chose server " + currentServer + " | load: " + cloudServers[currentServer].load);
-
-    // TODO: forward to the chosen server:
-    // Open a HTTP GET request to: "http://localhost:" + reqPort + request.url
-    /* http.get(url, function(remoteResponse) {
-       // Write the body and end the stream
-       }
-     */
-        
+    
+    var reqPort = cloudServers[currentServer].port;
+    //var start = Date.now();
+    
+    http.get("http://localhost:" + reqPort + request.url, function(remoteResponse) {
+        // Continuously update stream with data
+        var body = '';
+        remoteResponse.on('data', function(d) {
+            body += d;
+        });
+        remoteResponse.on('end', function() {
+            // Send back to response stream
+            response.write(body);
+            response.end();
+            //console.log("End Processing (" + reqPort + ") " + (Date.now() - start).toString());
+        });
+    });
+    
 }
 
 function naiveLoadBalancing() {
@@ -71,11 +81,19 @@ function naiveLoadBalancing() {
 }
 
 function roundRobinLoadBalancing() {
-    // TODO
+    currentServer++;
+    if (currentServer == cloudServers.length)
+	currentServer = 0;
 }
 
 function optimalLoadBalancing() {
-    // TODO
+    var lowest = 1000000;
+    for (var i=0; i<cloudServers.length; i++) {
+	if (cloudServers[i].load < lowest) {
+	    lowest = cloudServers[i].load;
+	    currentServer = i;
+	}
+    };
 }
 
 function startServer() {
