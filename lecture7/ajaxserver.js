@@ -21,7 +21,7 @@ var serveRequest = function(request, response) {
 			response.write("world-" + count);
 			response.statusCode = 200;
 			response.end();
-		}, 3000);
+		}, 1000);
 	} else if ( request.url.endsWith(".html") || request.url.endsWith(".js")) {
 		
 		// If it's a HTML or JS file, retrieve the file in the request
@@ -33,6 +33,7 @@ var serveRequest = function(request, response) {
 			console.log(error);
 			response.write("Unable to read file : " + fileName);
 			response.statusCode = 404;
+			response.end();
 		});
 		rs.on("data", function(data) {
 			response.write(data);
