@@ -40,8 +40,8 @@ window.onload = function() {
 	div2.addEventListener("click", captureHandler("div2"), true);
 	div3.addEventListener("click", captureHandler("div3"), true);
 	div4.addEventListener("click", captureHandler("div4"), true);
-	div5.addEventListener("click", bubbleHandler("div5"), true);
-	div6.addEventListener("click", bubbleHandler("div6"), true);
-	div7.addEventListener("click", bubbleHandler("div7"), true);
+	div5.addEventListener("click", captureHandler("div5"), true);
+	div6.addEventListener("click", captureHandler("div6"), true);
+	div7.addEventListener("click", captureHandler("div7"), true);
 	btn.addEventListener("click", captureHandler("btn"), true);
 };
