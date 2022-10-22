@@ -51,3 +51,5 @@ readStream.on("end", function() {
 readStream.on("error", function() {
 		console.log("Error occurred when reading from file " + fileName);
 	} );
+
+console.log("End of program");
