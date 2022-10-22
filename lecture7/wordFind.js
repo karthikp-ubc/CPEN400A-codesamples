@@ -21,7 +21,10 @@ readStream.on("data", function(blob) {
 			console.log("Read " + blob.length +  " bytes");
 			var newBlob = oldBlob + blob;
 			index = newBlob.indexOf(textToFind);
-			if (index >= 0) readStream.emit("end");
+			if (index >= 0) {
+				readStream.emit("end");
+				readStream.destroy();
+			}
 			oldBlob = blob;
 		} );
 
@@ -36,4 +39,3 @@ readStream.on("error", function() {
 		console.log("Error occurred when reading from file " + fileName);
 	} );
 
-console.log("End of program");

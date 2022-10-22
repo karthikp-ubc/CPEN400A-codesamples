@@ -30,6 +30,7 @@ readStream.on("data", function(blob) {
 					// If all the characters match, we have found it
 					index = i;
 					readStream.emit("end");	
+					readStream.destroy();
 					break;
 				}
 			} else if (matchIndex > 0){
@@ -50,5 +51,3 @@ readStream.on("end", function() {
 readStream.on("error", function() {
 		console.log("Error occurred when reading from file " + fileName);
 	} );
-
-console.log("End of program");
