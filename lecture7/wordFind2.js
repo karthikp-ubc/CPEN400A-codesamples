@@ -30,6 +30,7 @@ readStream.on("data", function(blob) {
 					// If all the characters match, we have found it
 					index = i;
 					readStream.emit("end");	
+					readStream.destroy();
 					break;
 				}
 			} else if (matchIndex > 0){
