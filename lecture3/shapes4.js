@@ -32,6 +32,22 @@ var add2 = function(p1, p2) {
 	return res;
 };
 
+var addAll = function() {
+	var p = new Point(0, 0);
+	for (var i = 0; i < arguments.length; i++) {
+		var point = arguments[i];
+		if (Object.getPrototypeOf(point)!=Point.prototype) {
+			throw { name: TypeError, 
+				message: "Object " + point + " is not of type point", 
+			};	
+		}
+		p.x += point.x;
+		p.y += point.y;
+	}
+	return p
+};
+
+
 var p1 = Point.new(2, 3);
 var p2 = Point.new(5, 7);
 console.log(p1);
