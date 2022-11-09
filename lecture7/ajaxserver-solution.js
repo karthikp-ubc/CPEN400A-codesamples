@@ -19,7 +19,7 @@ var serveRequest = function(request, response) {
 		else
 			counts[addr] = 0;
 		var instance = counts[addr];
-		var fileName = path + "/file"+ addr.replace(/:/g,'');
+		var fileName = path + "/file"+ instance;
 		console.log(fileName);
 		fs.appendFile(fileName, request.url + "\n", function(err) {
 			if (err) console.log("Error writing to file " + fileName);	
